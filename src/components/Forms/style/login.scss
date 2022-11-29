@@ -1,0 +1,13 @@
+.boxLogin, .boxSignup {
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem;
+    border: 1.5px solid black;
+    box-shadow: 1px 1px 0px 1px;
+    width: 400px !important;
+    justify-self: center    ;
+    .btnLogin, .btnSignup{
+        margin-top:2rem
+    }
+    
+}

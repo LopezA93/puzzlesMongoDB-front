@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./components/Navbar/navbar";
+import ItemListContainer from "./components/Prods/ItemListContainer";
+import FormLogin from "./components/Forms/FormLogin";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import FormSignup from "./components/Forms/FormSignup";
+import MensajesContainer from "./components/Messages/MensajesContainer";
+import ProfileUser from "./components/Profile/Profile";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route index element={<FormLogin/>}/>
+          <Route path="/login" element={<FormLogin/>}/>
+          <Route path="/signup" element={<FormSignup/>}/>
+          <Route path="/products" element={<ItemListContainer/> }/>
+          <Route path="/chat" element={<MensajesContainer/>} />
+          <Route path="/profile" element={<ProfileUser/>}/>
+          
+        </Routes>
+       
+      </BrowserRouter>
+    </>
   );
 }
 
