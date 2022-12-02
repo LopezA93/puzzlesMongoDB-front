@@ -6,6 +6,9 @@ import { authData } from "../../services/authJWT";
 import { useQuery } from "react-query";
 import BtnLogout from "./Logout";
 import Orders from "./Orders";
+import './style/profile.scss'
+import ErrorModal from "../Modals/ErrorModals";
+import CircularIndeterminate from "../CircularProgress/Circular";
 const ProfileUser = () => {
   // const [ordenes, setOrdenes] = useState([]);
 //   const [user, setUser] = useState();
@@ -19,14 +22,19 @@ const ProfileUser = () => {
       error,
       isLoading,
       
-    } = useQuery(["user"], data);
+    } = useQuery(["user"], data, {
+      cacheTime:1000,
+      retry:1,
+      // refetchInterval:3000
+    });
   
-    if (isLoading) return "Loading...";
+    if (isLoading) return <CircularIndeterminate/>;
   
-    if (error) {  alert("Ha ocurrido un error, por favor vuelva a ingresar. " + error.message);
+    if (error) {  
     localStorage.removeItem("login");
-    navigate('/login')
-    return
+    // alert("Credenciales invalidas, por favor vuelva a ingresar.");
+    // navigate('/login')
+    return <ErrorModal/>
   }
 //   const datos = () => {
 //     const loged = JSON.parse(localStorage.getItem("login"));

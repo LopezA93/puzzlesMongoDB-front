@@ -11,7 +11,7 @@ const BtnLogout = () => {
     navigate("/login");
   };
   return (
-    <Button variant="contained" color="error" onClick={Logout}>
+    <Button className='btnLogout' variant="contained" color="error" onClick={Logout}>
       Logout
     </Button>
   );

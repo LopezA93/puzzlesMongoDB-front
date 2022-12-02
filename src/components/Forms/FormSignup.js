@@ -80,7 +80,7 @@ const FormSignup = () => {
           Signup
         </Button>
       </form>
-      <Link to='/login'>Si ya tenes cuenta, ingresa aquí</Link>
+      <Link className='link'to='/login'>Si ya tenes cuenta, ingresa aquí</Link>
 
     </Container>
   );

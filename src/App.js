@@ -7,22 +7,19 @@ import FormSignup from "./components/Forms/FormSignup";
 import MensajesContainer from "./components/Messages/MensajesContainer";
 import ProfileUser from "./components/Profile/Profile";
 
-
 function App() {
   return (
     <>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route index element={<FormLogin/>}/>
-          <Route path="/login" element={<FormLogin/>}/>
-          <Route path="/signup" element={<FormSignup/>}/>
-          <Route path="/products" element={<ItemListContainer/> }/>
-          <Route path="/chat" element={<MensajesContainer/>} />
-          <Route path="/profile" element={<ProfileUser/>}/>
-          
+          <Route index element={<FormLogin />} />
+          <Route path="/login" element={<FormLogin />} />
+          <Route path="/signup" element={<FormSignup />} />
+          <Route path="/products" element={<ItemListContainer />} />
+          <Route path="/chat" element={<MensajesContainer />} />
+          <Route path="/profile" element={<ProfileUser />} />
         </Routes>
-       
       </BrowserRouter>
     </>
   );

@@ -38,7 +38,7 @@ const MensajesContainer = () => {
     e.preventDefault();
 
     const newMsj = {
-      email: user.user,
+      email: user.email,
       texto: newMensaje,
     };
     const send = await postMessage(newMsj);

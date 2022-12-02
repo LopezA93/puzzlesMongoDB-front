@@ -1,6 +1,7 @@
 import ProdCard from "./Items";
 import getProducts from "../../services/db";
 import { useQuery } from "react-query";
+import CircularIndeterminate from "../CircularProgress/Circular";
 
 const ItemListContainer = () => {
   const {
@@ -10,7 +11,7 @@ const ItemListContainer = () => {
     isFetching,
   } = useQuery(["prods"], getProducts);
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <CircularIndeterminate/>;
 
   if (error) return "Ha ocurrido un error: " + error.message;
 
