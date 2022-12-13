@@ -6,21 +6,33 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import FormSignup from "./components/Forms/FormSignup";
 import MensajesContainer from "./components/Messages/MensajesContainer";
 import ProfileUser from "./components/Profile/Profile";
-
+import NavCategory from "./components/Prods/ItemsCategory";
+import ProfileAdmin from "./components/Profile/Admin/ProfileAdmin";
+import { CartProvider } from "./context/CartContext";
+import CartModal from "./components/Modals/CartModal"; 
+import CartPage from "./components/Cart/Cart";
 function App() {
+  
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route index element={<FormLogin />} />
-          <Route path="/login" element={<FormLogin />} />
-          <Route path="/signup" element={<FormSignup />} />
-          <Route path="/products" element={<ItemListContainer />} />
-          <Route path="/chat" element={<MensajesContainer />} />
-          <Route path="/profile" element={<ProfileUser />} />
-        </Routes>
-      </BrowserRouter>
+      <CartProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route index element={<FormLogin />} />
+            <Route path="/login" element={<FormLogin />} />
+            <Route path="/signup" element={<FormSignup />} />
+            <Route path="/products" element={<ItemListContainer />} />
+            <Route path="/chat" element={<MensajesContainer />} />
+            <Route path="/profile" element={<ProfileUser />} />
+            <Route path="/products/:category" element={<NavCategory />} />
+            <Route path="/admin" element={<ProfileAdmin />} />
+            <Route path="*" element={<h1>Error 404</h1>} />
+            <Route path="/cart" element={<CartPage/>} />
+            <Route path="/modalCart" element={<CartModal/>}/>
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </>
   );
 }

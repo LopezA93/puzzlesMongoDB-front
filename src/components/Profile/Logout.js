@@ -6,7 +6,7 @@ const BtnLogout = () => {
 
   const Logout = async () => {
     const response = await logout();
-    console.log(response.data);
+    // console.log(response.data);
     localStorage.removeItem("login");
     navigate("/login");
   };

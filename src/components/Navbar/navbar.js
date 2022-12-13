@@ -14,6 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import './style/navbar.scss'
 const drawerWidth = 240;
 const navItems = ["Login", "Signup", "Profile","Products", "Chat"];
 
@@ -68,7 +69,7 @@ function Navbar(props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
+              <Button className='btnNav' variant={'text'} key={item} sx={{ color: "#fff" }}>
                 <Link to={item}>{item}</Link>
               </Button>
             ))}

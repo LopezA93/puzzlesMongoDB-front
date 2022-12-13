@@ -1,7 +1,9 @@
+
 import axios from "axios";
 import authHeader from "./authJWT";
 
-const url = "http://localhost:8081";
+const url = "http://puzzles-bar.vercel.app";
+
 // products
 
 const getProducts = async () => {
@@ -12,44 +14,60 @@ const getProducts = async () => {
     console.log(error);
   }
 };
+const getProductsByCategory = async (category) => {
+  const response = await axios.get(`${url}/products/${category}`);
+  return response;
+};
+
+const postProd = async (prod) => {
+  const response = await axios.post(`${url}/products`, prod, {
+    headers: authHeader(),
+  });
+  return response;
+};
+
+const deletProd = async (id) => {
+  const response = await axios.delete(`${url}/products/${id}`, {
+    headers: authHeader(),
+  });
+  return response;
+};
+
+const putProd = async (id, prod) => {
+  const response = await axios.put(`${url}/products/${id}`, prod, {
+    headers: authHeader(),
+  });
+  return response;
+};
 
 //users
+
+const signUp = async (user) => {
+  const response = await axios.post(`${url}/users/signup`, user);
+  return response;
+};
 
 const getUser = async (user) => {
   const response = await axios.post(`${url}/users/login`, user);
 
-    return response;
-  // try {
-    
-  // } catch (error) {
-  //   const err = error.response.data.message
-  //   console.log(err)
-  //   return err
-  // }
+  return response;
 };
 
 const getProfile = async () => {
-  const response = await axios.get(`${url}/users/profile`, {headers: authHeader()})
-  return response
-}
+  const response = await axios.get(`${url}/users/profile`, {
+    headers: authHeader(),
+  });
+  return response;
+};
 
 const logout = async () => {
   try {
     const response = await axios.get(`${url}/users/logout`);
-    return response
+    return response;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
-
-// const getToken = async (user) => {
-//   try {
-//     const data = await axios.post(`${url}/users/login`, user.token);
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+};
 
 //CHAT
 const getMessages = async () => {
@@ -68,16 +86,35 @@ const postMessage = async (mensaje) => {
     console.log(error);
   }
 };
+//cart
 
+const saveCart = async (values) => {
+  const response = await axios.post(`${url}/cart`, values);
+  return response;
+};
+const deleteCart = async (email) => {
+  const response = await axios.delete(`${url}/cart/${email}`);
+  return response;
+};
 //orders
 const getOrdersByEmail = async (email) => {
-  const response = await axios.get(`${url}/orden/${email}`)
-  return response
-}
+  const response = await axios.get(`${url}/order/${email}`);
+  return response;
+};
 
-
-export default getProducts;
-
-export { getUser, getMessages, 
-  // getToken, 
-  postMessage, logout, getProfile, getOrdersByEmail};
+export {
+  getProducts,
+  getUser,
+  getMessages,
+  postProd,
+  deletProd,
+  postMessage,
+  logout,
+  getProfile,
+  getOrdersByEmail,
+  getProductsByCategory,
+  putProd,
+  signUp,
+  saveCart,
+  deleteCart,
+};

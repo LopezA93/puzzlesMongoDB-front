@@ -30,7 +30,7 @@ const FormLogin = () => {
       const response = await getUser(values);
       setUser(response.data);
       localStorage.setItem("login", JSON.stringify(response.data));
-      console.log(response);
+      // console.log(response);
       setError(null);
       navigate("/profile");
 

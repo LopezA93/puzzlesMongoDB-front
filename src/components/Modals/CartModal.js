@@ -5,11 +5,32 @@ import { useNavigate } from "react-router-dom";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-const ErrorModal = ({ texto, subtexto, colorBtn }) => {
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CartContext from "../../context/CartContext";
+import { useContext } from "react";
+import { saveCart } from "../../services/db";
+const CartModal = () => {
   const rootRef = React.useRef(null);
   const navigate = useNavigate();
 
+  const {cartProducts, total} = useContext(CartContext)
+  const newCart = async () => {
+    
+    const user = JSON.parse(localStorage.getItem("login"));
+    const email = user.email;
+    const values = {
+      email: email,
+      productos: cartProducts,
+      total: total()
+
+    }
+    const response = await saveCart(values)
+    // console.log(response)
+  }
+
   return (
+    <>
+
     <Box
       sx={{
         height: 600,
@@ -48,21 +69,30 @@ const ErrorModal = ({ texto, subtexto, colorBtn }) => {
           }}
         >
           <Typography id="server-modal-title" variant="h6" component="h2">
-            {texto}
+            Producto añadido al carro
           </Typography>
           <Typography id="server-modal-description" sx={{ pt: 2 }}>
-            {subtexto}
+            <ShoppingCartIcon/>
           </Typography>
-          <Link to={"/login"}>
+          <Link to={"/products"}>
             {" "}
-            <Button variant="contained" color={colorBtn}>
+            <Button variant="contained" color="primary">
               {" "}
-              Click Aquí
+              Seguir comprando
+            </Button>
+          </Link>
+          <Link to={"/cart"}>
+            {" "}
+            <Button variant="contained" color="success" onClick={newCart}
+            >
+              {" "}
+              Ir al carrito
             </Button>
           </Link>
         </Box>
       </Modal>
     </Box>
+    </>
   );
 };
-export default ErrorModal;
+export default CartModal;

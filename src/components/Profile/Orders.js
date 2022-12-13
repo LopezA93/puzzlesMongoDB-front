@@ -53,7 +53,7 @@ const Orders = () => {
                       Orden: {order.numero}
                     </Typography>
                     <Typography sx={{ color: "text.secondary" }}>
-                      Fecha: {order.fecha}
+                      Fecha: {order.fecha.substring(3,15)}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>

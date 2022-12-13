@@ -1,0 +1,38 @@
+.itemBox {
+    display: flex !important;
+    justify-content: space-between !important;
+    border-bottom: 1px solid black;
+    background-color: white;
+    flex-wrap: wrap;
+    // margin-top: 2rem;
+    // padding: 2rem;
+    border-radius: 20px;
+
+    img {
+        width: 70px;
+        height: 120px;
+        
+    }
+
+    p {
+        align-self: center;
+        font-size: 1rem;
+
+    }
+
+    .btnDeleteItem {
+        color: black;
+    }
+    @media screen and (max-width:550px) {
+
+        img{
+            margin: 0 auto
+        }
+        p{
+            margin: 1rem;
+            font-size: 1rem;
+        }
+        
+        
+    }
+}

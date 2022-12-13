@@ -4,21 +4,15 @@ import { getMessages, postMessage } from "../../services/db";
 import Mensajes from "./MensajesCard";
 import io from "socket.io-client";
 import { Container } from "@mui/material";
-const socket = io.connect("http://localhost:8081");
+import { Link } from "react-router-dom";
+import {Button} from "@mui/material";
+const socket = io.connect("https://puzzles-bar.vercel.app");
 const MensajesContainer = () => {
-  // const {
-  //   data: mensajes,
-  //   error,
-  //   isLoading,
-  //   refetch,
-  // } = useQuery(["mensajes"], getMessages, {
-  //   // refetchInterval:200
   
-  // });
 
   const [mensajes, setMensajes] = useState([]);
   const [newMensaje, setNewMensaje] = useState("");
-  // const [loading, setLoading] = useState(null)
+
   const getData = async () => {
     const response = await getMessages();
      return setMensajes(response);
@@ -26,10 +20,7 @@ const MensajesContainer = () => {
 
   useEffect(() => {
     socket.on("message", getData());
-    // refetch()
-    // return () => {
-    //   socket.off("message", getData());
-    // };
+   
   }, [[], mensajes]);
 
   const userJSON = localStorage.getItem("login");
@@ -47,12 +38,14 @@ const MensajesContainer = () => {
     setNewMensaje("");
   };
 
-  // if (isLoading) return "Cargando mensajes...";
-  // if (error) return "Ha ocurrido un error: " + error.message;
+ 
 
   return (
     <> {
-      !user ? ('Debe loguearse para ingresar a esta ruta' ) :
+      !user ? ( 
+      <><h1>Debe loguearse para ingresar a esta ruta, por favor ingrese aquí </h1>
+        <Link to={'/login'} > <Button color={'primary'} variant={'outlined'} >Login</Button></Link>
+      </>) :
     
       
       <> <Container className='boxMsj'>
