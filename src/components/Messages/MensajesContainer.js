@@ -6,7 +6,7 @@ import io from "socket.io-client";
 import { Container } from "@mui/material";
 import { Link } from "react-router-dom";
 import {Button} from "@mui/material";
-const socket = io.connect("ws://puzzles-bar.vercel.app", {transports: ['polling']});
+const socket = io.connect("https://puzzles-bar.vercel.app", {transports: ['polling']});
 const MensajesContainer = () => {
   
 
