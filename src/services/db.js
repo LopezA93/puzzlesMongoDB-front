@@ -2,7 +2,7 @@
 import axios from "axios";
 import authHeader from "./authJWT";
 
-const url = "http://puzzles-bar.vercel.app";
+const url = "https://puzzles-bar.vercel.app";
 
 // products
 
