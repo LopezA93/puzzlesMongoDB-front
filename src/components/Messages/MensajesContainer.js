@@ -5,22 +5,23 @@ import Mensajes from "./MensajesCard";
 import io from "socket.io-client";
 import { Container } from "@mui/material";
 import { Link } from "react-router-dom";
-import {Button} from "@mui/material";
-const socket = io.connect("https://puzzles-bar.vercel.app");
+import { Button } from "@mui/material";
+let socket;
 const MensajesContainer = () => {
-  
+  // const socket = io.connect("https://localhost:8001", {transports: ['websocket']});
+  const ENDPOINT = "https://puzzles-bar.vercel.app";
 
   const [mensajes, setMensajes] = useState([]);
   const [newMensaje, setNewMensaje] = useState("");
 
   const getData = async () => {
     const response = await getMessages();
-     return setMensajes(response);
+    return setMensajes(response);
   };
 
   useEffect(() => {
+    socket = io(ENDPOINT);
     socket.on("message", getData());
-   
   }, [[], mensajes]);
 
   const userJSON = localStorage.getItem("login");
@@ -38,42 +39,48 @@ const MensajesContainer = () => {
     setNewMensaje("");
   };
 
- 
-
   return (
-    <> {
-      !user ? ( 
-      <><h1>Debe loguearse para ingresar a esta ruta, por favor ingrese aquí </h1>
-        <Link to={'/login'} > <Button color={'primary'} variant={'outlined'} >Login</Button></Link>
-      </>) :
-    
-      
-      <> <Container className='boxMsj'>
-        <h1>
-          Mensajes 
-        </h1>
-        
-        <div className="mensajes">
-          {mensajes.map((item, index) => {
-            return <Mensajes key={index} props={item} />;
-          })}
-        </div>
-      </Container>
-      <Container display="flex">
-        <form onSubmit={handleSubmit}>
-          <div> Usuario:{user.user}</div>
-          <input
-            type="text"
-            name="newMensaje"
-            id="newMensaje"
-            value={newMensaje}
-            onChange={(e) => setNewMensaje(e.target.value)}
-          />
-          <button type="submit">Enviar</button>
-        </form>
-      </Container>
-      </>
-      }
+    <>
+      {" "}
+      {!user ? (
+        <>
+          <h1>
+            Debe loguearse para ingresar a esta ruta, por favor ingrese aquí{" "}
+          </h1>
+          <Link to={"/login"}>
+            {" "}
+            <Button color={"primary"} variant={"outlined"}>
+              Login
+            </Button>
+          </Link>
+        </>
+      ) : (
+        <>
+          {" "}
+          <Container className="boxMsj">
+            <h1>Mensajes</h1>
+
+            <div className="mensajes">
+              {mensajes.map((item, index) => {
+                return <Mensajes key={index} props={item} />;
+              })}
+            </div>
+          </Container>
+          <Container display="flex">
+            <form onSubmit={handleSubmit}>
+              <div> Usuario:{user.user}</div>
+              <input
+                type="text"
+                name="newMensaje"
+                id="newMensaje"
+                value={newMensaje}
+                onChange={(e) => setNewMensaje(e.target.value)}
+              />
+              <button type="submit">Enviar</button>
+            </form>
+          </Container>
+        </>
+      )}
     </>
   );
 };
