@@ -5,20 +5,18 @@ import { useQuery } from "react-query";
 import CircularIndeterminate from "../CircularProgress/Circular";
 import ProdCard from "./Items";
 import { Link, useParams } from "react-router-dom";
-import {Grid} from "@mui/material";
-import {Container} from "@mui/material";
+import { Grid } from "@mui/material";
+import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 const NavCategory = () => {
-
   const { category } = useParams();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const response = async () => {
     const { data } = await getProductsByCategory(category).catch((err) =>
       console.log(err)
-      
     );
-    return data
+    return data;
   };
 
   const {
@@ -34,24 +32,38 @@ const NavCategory = () => {
   const user = JSON.parse(userJSON);
   return (
     <>
-  {
-      !user ? ( 
-      <><h1>Debe loguearse para ingresar a esta ruta, por favor ingrese aquí </h1>
-        <Link to={'/login'} > <Button color={'primary'} variant={'outlined'} >Login</Button></Link>
-      </>) : (
-    prodsCategory.length === undefined ? navigate('/404') : 
-    <Container>
-      <h1>{category.toUpperCase()}</h1>
-      <Link to={'/products'}> <Button variant="outlined" color="primary">
-                    Volver
-                  </Button></Link>
-      <Grid container spacing={2} >
-        {prodsCategory.map((item,index) => (
-          <ProdCard key={index} prod={item} />
-        ))}
-        </Grid>
-      </Container>)
-      }
+      {!user ? (
+        <>
+        <Container>
+          <h1>
+            Debe loguearse para ingresar a esta ruta, por favor ingrese aquí{" "}
+          </h1>
+          <Link to={"/login"}>
+            {" "}
+            <Button color={"primary"} variant={"outlined"}>
+              Login
+            </Button>
+          </Link>
+          </Container>
+        </>
+      ) : prodsCategory.length === undefined ? (
+        navigate("/404")
+      ) : (
+        <Container>
+          <h1>{category.toUpperCase()}</h1>
+          <Link to={"/products"}>
+            {" "}
+            <Button variant="outlined" color="primary">
+              Volver
+            </Button>
+          </Link>
+          <Grid container spacing={2}>
+            {prodsCategory.map((item, index) => (
+              <ProdCard key={index} prod={item} />
+            ))}
+          </Grid>
+        </Container>
+      )}
     </>
   );
 };

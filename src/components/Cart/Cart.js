@@ -121,8 +121,8 @@ const CartPage = () => {
             <p>
               No hay productos en el carrito, para comprar agregue productos
             </p>
-            <Link to={"/"}>
-              <Button className="btnVolver">Inicio</Button>
+            <Link to={"/products"}>
+              <Button className="btnVolver">Productos</Button>
             </Link>
           </div>
         )}

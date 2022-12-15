@@ -19,38 +19,49 @@ const ItemListContainer = () => {
   const user = JSON.parse(userJSON);
   return (
     <>
-    {
-      !user ? ( 
-      <><h1>Debe loguearse para ingresar a esta ruta, por favor ingrese aquí </h1>
-        <Link to={'/login'} > <Button color={'primary'} variant={'outlined'} >Login</Button></Link>
-      </>) :
-      <Container>
-        <h2>Productos</h2>
-        <Grid>
-          <h3>Categorias</h3>
-          <ul>
-            {categorys.map((i, index) => {
+      {!user ? (
+        <>
+        <Container>
+          <h1>
+            Debe loguearse para ingresar a esta ruta, por favor ingrese aquí{" "}
+          </h1>
+          <Link to={"/login"}>
+            {" "}
+            <Button color={"primary"} variant={"outlined"}>
+              Login
+            </Button>
+          </Link>
+          </Container>
+        </>
+      ) : (
+        <Container>
+          <h2>Productos</h2>
+          <Grid>
+            <h3>Categorias</h3>
+            <ul>
+              {categorys.map((i, index) => {
+                return (
+                  <Link key={index} to={i}>
+                    {" "}
+                    <Button variant="outlined" color="primary">
+                      <li>{i}</li>
+                    </Button>
+                  </Link>
+                );
+              })}
+            </ul>
+          </Grid>
+          <Grid container spacing={2}>
+            {prods.map((item, index) => {
               return (
-                <Link key={index} to={i}>
-                  {" "}
-                  <Button variant="outlined" color="primary">
-                    <li>{i}</li>
-                  </Button>
-                </Link>
+                <Grid key={index} item xs={6}>
+                  <ProdCard prod={item} />
+                </Grid>
               );
             })}
-          </ul>
-        </Grid>
-        <Grid container spacing={2}>
-          {prods.map((item, index) => {
-            return (
-              <Grid key={index} item xs={6}>
-                <ProdCard prod={item} />
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Container>}
+          </Grid>
+        </Container>
+      )}
     </>
   );
 };

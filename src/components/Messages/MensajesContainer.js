@@ -20,7 +20,7 @@ const MensajesContainer = () => {
   };
 
   useEffect(() => {
-    socket = io(ENDPOINT);
+    socket = io(ENDPOINT, {transports: ['websocket']});
     socket.on("message", getData());
   }, [[], mensajes]);
 
@@ -34,8 +34,7 @@ const MensajesContainer = () => {
       texto: newMensaje,
     };
     const send = await postMessage(newMsj);
-    // console.log(newMsj);
-    // refetch()
+  
     setNewMensaje("");
   };
 

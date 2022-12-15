@@ -6,14 +6,15 @@ import TextField from "@mui/joy/TextField";
 import { Container } from "@mui/material";
 import { getUser } from "../../services/db";
 import { useEffect, useState } from "react";
-import "./style/login.scss";
+import "./style/forms.scss";
 import { useNavigate } from "react-router-dom";
+import CircularIndeterminate from "../CircularProgress/Circular";
 
 const FormLogin = () => {
   const [error, setError] = useState(null);
   const [user, setUser] = useState();
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false)
   const validationSchema = yup.object({
     email: yup
       .string("Enter your email")
@@ -27,16 +28,20 @@ const FormLogin = () => {
   
   const onSubmit = async (values) => {
     try {
+      setError(null);
+      setLoading(true)
       const response = await getUser(values);
       setUser(response.data);
       localStorage.setItem("login", JSON.stringify(response.data));
-      // console.log(response);
-      setError(null);
+      
+      
       navigate("/profile");
 
     } catch (error) {
       console.log(error.response.data.message);
       setError(error.response.data.message);
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -59,48 +64,50 @@ const FormLogin = () => {
   }, []);
   return (
     <Container className="boxLogin">
-      <div>{error ? error : ""}</div>
-      <div>
-        {user? (navigate('/profile')) : (
+      <div className="errForm">{error ? error : ""}</div>
+      
+      <div> 
+        {loading ? <CircularIndeterminate/> : (user? (navigate('/profile')) : (
          
-          <>
-            <h1>Login</h1>
-            <form onSubmit={formik.handleSubmit}>
-              <TextField
-                id="email"
-                name="email"
-                label="Email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                error={formik.touched.email && Boolean(formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email}
-              />
-              <TextField
-                id="password"
-                name="password"
-                label="Password"
-                type="password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                error={
-                  formik.touched.password && Boolean(formik.errors.password)
-                }
-                helperText={formik.touched.password && formik.errors.password}
-              />
-              <Button
-                className="btnLogin"
-                color="success"
-                variant="contained"
-                type="submit"
-              >
-                Login
-              </Button>
-            </form>
+         <>
+           <h1>Login</h1>
+           <form onSubmit={formik.handleSubmit}>
+             <TextField
+               id="email"
+               name="email"
+               label="Email"
+               value={formik.values.email}
+               onChange={formik.handleChange}
+               error={formik.touched.email && Boolean(formik.errors.email)}
+               helperText={formik.touched.email && formik.errors.email}
+             />
+             <TextField
+               id="password"
+               name="password"
+               label="Password"
+               type="password"
+               value={formik.values.password}
+               onChange={formik.handleChange}
+               error={
+                 formik.touched.password && Boolean(formik.errors.password)
+               }
+               helperText={formik.touched.password && formik.errors.password}
+             />
+             <Button
+               className="btnLogin"
+               color="success"
+               variant="contained"
+               type="submit"
+             >
+               Login
+             </Button>
+           </form>
 
-            <Link className="link" to="/signup">
-              Registrate aquí
-            </Link>
-          </>)}
+           <Link className="link" to="/signup">
+             Registrate aquí
+           </Link>
+         </>))}
+        
         
       </div>
     </Container>

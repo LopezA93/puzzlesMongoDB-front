@@ -5,43 +5,52 @@ import TextField from "@mui/joy/TextField";
 import { Container } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+import CircularIndeterminate from "../CircularProgress/Circular";
 import { signUp } from "../../services/db";
-import "./style/login.scss";
-const validationSchema = yup.object({
-  email: yup
-    .string("Enter your email")
-    .email("Enter a valid email")
-    .required("Email is required"),
-  password: yup
-    .string("Enter your password")
-    .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
-  nombre: yup.string("Enter your name").required("Fullname is required"),
-  direccion: yup.string("Enter your adress").required("Adress is required"),
-  telefono: yup
-    .number("Enter your Phone number")
-    .required("Phone number is required"),
-});
+import "./style/forms.scss";
 
 const FormSignup = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const validationSchema = yup.object({
+    email: yup
+      .string("Enter your email")
+      .email("Enter a valid email")
+      .required("Email is required"),
+    password: yup
+      .string("Enter your password")
+      .min(8, "Password should be of minimum 8 characters length")
+      .required("Password is required"),
+    nombre: yup.string("Enter your name").required("Fullname is required"),
+    direccion: yup.string("Enter your adress").required("Adress is required"),
+    telefono: yup
+      .number("Enter your Phone number")
+      .required("Phone number is required"),
+  });
+
   const onSubmit = async (values) => {
-    const response = await signUp(values).catch((err) => {
-      if (err && err.response) {
-        console.log("error", err.response.data.message);
-        setError(err.response.data.message);
-      }
-    });
-
-    if (response) {
-      setSuccess(response.data.message);
-      // console.log("response", response);
-      localStorage.setItem("x-auth-token", response.data.token);
-
+    try {
+      setLoading(true);
       setError(null);
-      formik.resetForm();
+      const response = await signUp(values).catch((err) => {
+        if (err && err.response) {
+          console.log("error", err.response.data.message);
+          setError(err.response.data.message);
+        }
+      });
+
+      if (response) {
+        setSuccess(response.data.message);
+        localStorage.setItem("x-auth-token", response.data.token);
+        setError(null);
+        formik.resetForm();
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,8 +68,8 @@ const FormSignup = () => {
 
   return (
     <Container className="boxSignup">
-      <div>{!success ? error : success}</div>
-      <h1>Signup</h1>
+      <div className="errForm">{!success ? error : success}</div>
+      {loading ? <CircularIndeterminate/> : (<><h1>Signup</h1>
       <form onSubmit={formik.handleSubmit}>
         <TextField
           id="nombre"
@@ -119,7 +128,7 @@ const FormSignup = () => {
       </form>
       <Link className="link" to="/login">
         Si ya tenes cuenta, ingresa aquí
-      </Link>
+      </Link></>)}
     </Container>
   );
 };

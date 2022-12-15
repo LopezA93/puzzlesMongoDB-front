@@ -16,7 +16,7 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import './style/navbar.scss'
 const drawerWidth = 240;
-const navItems = ["Login", "Signup", "Profile","Products", "Chat"];
+const navItems = ["Login", "Signup", "Profile","Products", "Cart"];
 
 function Navbar(props) {
   const { window } = props;
@@ -65,7 +65,7 @@ function Navbar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            PUZZLES
+            <Link to={'/'}>PUZZLES</Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
