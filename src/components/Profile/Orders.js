@@ -40,6 +40,8 @@ const Orders = () => {
         : orders.map((order, index) => {
             return (
               <Stack spacing={2} key={index}>
+
+
                 <Accordion
                   expanded={expanded === "panel1"}
                   onChange={handleChange("panel1")}
@@ -55,11 +57,14 @@ const Orders = () => {
                     <Typography sx={{ color: "text.secondary" }}>
                       Fecha: {order.fecha.substring(3,15)}
                     </Typography>
+                    <Typography sx={{ color: "text.secondary", marginLeft:'5rem' }}>
+                      Total: ${order.total}
+                    </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    {order.productos.map((prod) => (
+                    {order.productos.map((prod, index) => (
                       <Typography
-                        key={prod.productId}
+                        key={index}
                         display={"flex"}
                         justifyContent={"space-around"}
                       >
@@ -71,6 +76,7 @@ const Orders = () => {
                         </span>
                       </Typography>
                     ))}
+                    
                   </AccordionDetails>
                 </Accordion>
                 {/* <p>Orden Num. {order.numero}</p>

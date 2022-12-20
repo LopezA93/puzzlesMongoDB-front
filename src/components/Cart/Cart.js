@@ -2,23 +2,18 @@ import { useContext, useState } from "react";
 import { Container, Button, Modal } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Link, useNavigate } from "react-router-dom";
-import CircularProgress from "@mui/material/CircularProgress";
-import Box from "@mui/material/Box";
 import CartContext from "../../context/CartContext";
 import "./style/cart.scss";
-import { deleteCart } from "../../services/db";
+
 
 const CartPage = () => {
   const navigate = useNavigate();
-  const { cartProducts, setCartProducts, total, delProd } = useContext(CartContext);
-  const [openModal, setOpenModal] = useState(false);
-  const deletCart = async () => {
-    const user = JSON.parse(localStorage.getItem("login"));
-    const email = user.email;
-    const response = await deleteCart(email)
-    // console.log(response)
+  const { cartProducts, setCartProducts, total, delProd } =
+    useContext(CartContext);
+  const user = JSON.parse(localStorage.getItem("login"));
 
-  }
+  
+  
   // const [formData, setFormData] = useState(
   //     {
 
@@ -93,7 +88,6 @@ const CartPage = () => {
         <h1>Carrito</h1>
         {cartProducts.length ? (
           <div className="box">
-
             {cartProducts.map((product, index) => {
               return (
                 <Container className="itemBox" key={index}>
@@ -101,18 +95,17 @@ const CartPage = () => {
                   <p>Producto: {product.nombre}</p>
                   <p>Precio: $ {product.precio}</p>
                   <p>Cantidad: {product.cantidad}</p>
-                  <Button onClick={() => delProd(product)} ><DeleteIcon className="btnDeleteItem" /></Button>
+                  <Button onClick={() => delProd(product)}>
+                    <DeleteIcon className="btnDeleteItem" />
+                  </Button>
                 </Container>
               );
             })}
 
             <Container className="finBox">
               <h4>TOTAL: ${total()}</h4>
-              <Button
-                className="btnFinCompra"
-                 onClick={deletCart}
-              >
-                FINALIZAR COMPRA
+              <Button className="btnFinCompra" onClick={()=> navigate('/checkout')}>
+                Continuar
               </Button>
             </Container>
           </div>

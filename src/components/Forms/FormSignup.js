@@ -25,6 +25,7 @@ const FormSignup = () => {
       .required("Password is required"),
     nombre: yup.string("Enter your name").required("Fullname is required"),
     direccion: yup.string("Enter your adress").required("Adress is required"),
+    ciudad: yup.string("Enter your city").required("City is required"),
     telefono: yup
       .number("Enter your Phone number")
       .required("Phone number is required"),
@@ -60,6 +61,7 @@ const FormSignup = () => {
       email: "",
       password: "",
       direccion: "",
+      ciudad:"",
       telefono: "",
     },
     validationSchema: validationSchema,
@@ -107,6 +109,15 @@ const FormSignup = () => {
           onChange={formik.handleChange}
           error={formik.touched.direccion && Boolean(formik.errors.direccion)}
           helperText={formik.touched.direccion && formik.errors.direccion}
+        />
+        <TextField
+          id="ciudad"
+          name="ciudad"
+          label="Ciudad"
+          value={formik.values.ciudad}
+          onChange={formik.handleChange}
+          error={formik.touched.ciudad && Boolean(formik.errors.ciudad)}
+          helperText={formik.touched.ciudad && formik.errors.ciudad}
         />
         <TextField
           id="telefono"

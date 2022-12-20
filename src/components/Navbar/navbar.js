@@ -14,9 +14,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 import './style/navbar.scss'
 const drawerWidth = 240;
-const navItems = ["Login", "Signup", "Profile","Products", "Cart"];
+const navItems = ["Login", "Signup", "Profile","Products"];
 
 function Navbar(props) {
   const { window } = props;
@@ -74,6 +76,9 @@ function Navbar(props) {
               </Button>
             ))}
           </Box>
+          <Button className='btnNav' variant={'text'} sx={{ color: "#fff" }}>
+                <Link to={'/cart'}><ShoppingCartIcon/></Link>
+              </Button>
         </Toolbar>
       </AppBar>
       <Box component="nav">

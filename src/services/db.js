@@ -1,8 +1,8 @@
-
 import axios from "axios";
 import authHeader from "./authJWT";
 
-const url = "https://puzzles-bar.vercel.app";
+// const url = "https://puzzles-bar.vercel.app";
+const url = 'http://localhost:8081'
 
 // products
 
@@ -96,11 +96,25 @@ const deleteCart = async (email) => {
   const response = await axios.delete(`${url}/cart/${email}`);
   return response;
 };
+
+
 //orders
 const getOrdersByEmail = async (email) => {
   const response = await axios.get(`${url}/order/${email}`);
   return response;
 };
+
+const sendOrder = async (values) => {
+  const response = await axios.post(`${url}/order`, values)
+  return response
+}
+
+//mp
+
+const pointMP= async (values) => {
+  const response = await axios.post(`${url}/mercadopago`, values)
+  return response
+}
 
 export {
   getProducts,
@@ -117,4 +131,6 @@ export {
   signUp,
   saveCart,
   deleteCart,
+  sendOrder,
+  pointMP
 };

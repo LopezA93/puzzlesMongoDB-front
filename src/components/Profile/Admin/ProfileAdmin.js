@@ -24,7 +24,9 @@ const ProfileAdmin = () => {
     isLoading,
   } = useQuery(["userAdmin"], data, {
     cacheTime: 1000,
-    retry: 1,
+    retry: false,
+
+
   });
 
   if (isLoading) return <CircularIndeterminate />;

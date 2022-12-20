@@ -14,6 +14,7 @@ import CartPage from "./components/Cart/Cart";
 import Home from "./pages/Home";
 import Error404 from './pages/Error404'
 import Profile from "./pages/Profile";
+import Checkout from './pages/Checkout'
 function App() {
   
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="*" element={<Error404/>} />
             <Route path="/cart" element={<CartPage/>} />
             <Route path="/modalCart" element={<CartModal/>}/>
+            <Route path="/checkout" element={<Checkout/>}/>
           </Routes>
         </BrowserRouter>
       </CartProvider>

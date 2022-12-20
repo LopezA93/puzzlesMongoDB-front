@@ -1,0 +1,11 @@
+
+.boxItems{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .boxItemCheckout{
+        img{
+            width: 100px;
+        }
+    }
+}
