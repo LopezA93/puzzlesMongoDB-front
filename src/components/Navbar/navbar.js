@@ -14,16 +14,17 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
-import './style/navbar.scss'
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useContext } from "react";
+import CartContext from "../../context/CartContext";
+import "./style/navbar.scss";
 const drawerWidth = 240;
-const navItems = ["Login", "Signup", "Profile","Products"];
+const navItems = ["Login", "Signup", "Profile", "Products"];
 
 function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const { cartProducts } = useContext(CartContext);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -49,9 +50,16 @@ function Navbar(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+  let cantItems = cartProducts.length;
+
   return (
-    <Box sx={{ display: "flex"}} >
-      <AppBar color="secondary" position='static' className='Appbar' component="nav">
+    <Box sx={{ display: "flex" }}>
+      <AppBar
+        color="secondary"
+        position="static"
+        className="Appbar"
+        component="nav"
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -67,18 +75,30 @@ function Navbar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <Link to={'/'}>PUZZLES</Link>
+            <Link to={"/"}>PUZZLES</Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button className='btnNav' variant={'text'} key={item} sx={{ color: "#fff" }}>
+              <Button
+                className="btnNav"
+                variant={"text"}
+                key={item}
+                sx={{ color: "#fff" }}
+              >
                 <Link to={item}>{item}</Link>
               </Button>
             ))}
           </Box>
-          <Button className='btnNav' variant={'text'} sx={{ color: "#fff" }}>
-                <Link to={'/cart'}><ShoppingCartIcon/></Link>
-              </Button>
+          <Box xs={{display:'flex'}}>
+          <Button className="btnNav" variant={"text"} sx={{ color: "#fff" }}>
+            <Link to={"/cart"}>
+              <ShoppingCartIcon />
+              
+            </Link>
+            {cantItems === 0 ? '' : <p>{cantItems}</p> }
+           
+          </Button>
+          </Box>
         </Toolbar>
       </AppBar>
       <Box component="nav">
@@ -104,7 +124,5 @@ function Navbar(props) {
     </Box>
   );
 }
-
-
 
 export default Navbar;

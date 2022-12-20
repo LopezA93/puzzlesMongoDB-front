@@ -60,7 +60,7 @@ const OrderModal = ({ texto, subtexto, colorBtn, order, total }) => {
               Cerrar
             </Button>
           </Link>
-          <form action="http://localhost:8081/mercadopago" method="POST">
+          <form action="https://puzzles-bar.vercel.app/mercadopago" method="POST">
             <input type="hidden" name="title" value={order} />
             <input type="hidden" name="price" value={total} />
             <Button sx={{marginTop:"1rem"}} color='success' variant="contained" type="submit" value="Pagar">
