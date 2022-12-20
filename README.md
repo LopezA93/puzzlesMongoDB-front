@@ -10,4 +10,4 @@
 ## https://puzzlesmongodb.netlify.app/
 
 ### Repositorio API
-## https://github.com/LopezA93/puzzlesAgustinLopez
+## https://github.com/LopezA93/puzzlesMongoDb
