@@ -1,0 +1,79 @@
+.formAdmin {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.formAdmin label {
+  display: block;
+  padding: 1rem;
+}
+
+.formAdmin input {
+  padding: 0.5rem;
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+}
+
+.formAdmin .btnAgregarProducto {
+  margin: 1rem;
+}
+
+.Items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 600px;
+  overflow-y: auto;
+  border: 1px solid gray;
+}
+
+.Items .boxEditarItem {
+  width: 200px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.Items .boxEditarItem img {
+  max-width: 150px;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+}
+
+.Items .boxEditarItem .nombreItem {
+  margin: 0.5rem;
+  font-weight: bolder;
+}
+
+.Items .boxEditarItem .btns {
+  margin: 1rem;
+}
+
+.Items .boxEditarItem .btns .btnEditarItem,
+.Items .boxEditarItem .btns .btnEliminarItem {
+  display: block;
+  margin: 0.7rem auto;
+  top: 0;
+}
+
+.Items .boxEditarItem .btns .btnEliminarItem {
+  background-color: #a30e0e;
+}
+/*# sourceMappingURL=profileAdmin.css.map */

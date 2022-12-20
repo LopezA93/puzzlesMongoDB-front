@@ -1,8 +1,7 @@
 import { Button, Container, Grid } from "@mui/material";
 import * as React from "react";
-import { useState, useContext } from "react";
 import Box from "@mui/material/Box";
-import { deleteCart, sendOrder, pointMP } from "../services/db";
+import { deleteCart, sendOrder } from "../services/db";
 import TextField from "@mui/material/TextField";
 import CartContext from "../context/CartContext";
 import "./styles/checkout.scss";
@@ -12,16 +11,17 @@ import { Link } from "react-router-dom";
 
 import ErrorModal from "../components/Modals/ErrorModals";
 import OrderModal from "../components/Modals/OrderModal";
+import { useState, useContext } from "react";
+import { authData } from "../services/authJWT";
 
 const Checkout = () => {
-  const { cartProducts, setCartProducts, total, delProd } =
-    useContext(CartContext);
-  const userJSON = localStorage.getItem("login");
-  const user = JSON.parse(userJSON);
+  const { cartProducts, setCartProducts, total, delProd } = useContext(CartContext);
+
+  const user = authData()
   const [newAdress, setNewAdress] = useState(false);
   const [loading, setLoading] = useState(false);
   const [datos, setDatos] = useState({
-    // email: user.email,
+    email: user.email,
     direccion: user.direccion,
     ciudad: user.ciudad,
     telefono: user.telefono,
@@ -229,7 +229,6 @@ const Checkout = () => {
                       order={orderGenerada.numero}
                       total={totalCarro}
                     />
-                    
                   </>
                 )}
               </Box>

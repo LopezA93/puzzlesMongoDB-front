@@ -1,0 +1,10 @@
+.btnNav {
+  margin: 0 0.5rem !important;
+  border: black;
+}
+
+.btnNav:hover {
+  background-color: white !important;
+  color: #9c27b0 !important;
+}
+/*# sourceMappingURL=navbar.css.map */

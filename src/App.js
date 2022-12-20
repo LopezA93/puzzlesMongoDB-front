@@ -9,35 +9,38 @@ import ProfileUser from "./components/Profile/Profile";
 import NavCategory from "./components/Prods/ItemsCategory";
 import ProfileAdmin from "./components/Profile/Admin/ProfileAdmin";
 import { CartProvider } from "./context/CartContext";
-import CartModal from "./components/Modals/CartModal"; 
+import CartModal from "./components/Modals/CartModal";
 import CartPage from "./components/Cart/Cart";
 import Home from "./pages/Home";
-import Error404 from './pages/Error404'
+import Error404 from "./pages/Error404";
 import Profile from "./pages/Profile";
-import Checkout from './pages/Checkout'
+import Checkout from "./pages/Checkout";
+
+import { RequireAuth } from "./services/AuthProtected";
 function App() {
-  
   return (
     <>
-      <CartProvider>
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="/login" element={<FormLogin />} />
-            <Route path="/signup" element={<FormSignup />} />
-            <Route path="/products" element={<ItemListContainer />} />
-            {/* <Route path="/chat" element={<MensajesContainer />} /> */}
-            <Route path="/profile" element={<Profile/>} />
-            <Route path="/products/:category" element={<NavCategory />} />
-            {/* <Route path="/admin" element={<ProfileAdmin />} /> */}
-            <Route path="*" element={<Error404/>} />
-            <Route path="/cart" element={<CartPage/>} />
-            <Route path="/modalCart" element={<CartModal/>}/>
-            <Route path="/checkout" element={<Checkout/>}/>
-          </Routes>
-        </BrowserRouter>
-      </CartProvider>
+
+        <CartProvider>
+          <BrowserRouter>
+            <Navbar />
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path="/login" element={<FormLogin />} />
+              <Route path="/signup" element={<FormSignup />} />
+              <Route path="/products" element={<ItemListContainer />} />
+              {/* <Route path="/chat" element={<MensajesContainer />} /> */}
+              <Route path="/profile" element={<RequireAuth> <Profile /></RequireAuth>} />
+              <Route path="/products/:category" element={<NavCategory />} />
+              {/* <Route path="/admin" element={<ProfileAdmin />} /> */}
+              <Route path="*" element={<Error404 />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/modalCart" element={<CartModal />} />
+              <Route path="/checkout" element={ <RequireAuth> <Checkout /></RequireAuth>} />
+            </Routes>
+          </BrowserRouter>
+        </CartProvider>
+
     </>
   );
 }

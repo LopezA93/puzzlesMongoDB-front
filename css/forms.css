@@ -1,0 +1,25 @@
+.boxLogin, .boxSignup {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem;
+  border: 1.5px solid black;
+  -webkit-box-shadow: 1px 1px 0px 1px;
+          box-shadow: 1px 1px 0px 1px;
+  width: 400px !important;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.boxLogin .btnLogin, .boxLogin .btnSignup, .boxSignup .btnLogin, .boxSignup .btnSignup {
+  margin: 2rem;
+}
+
+.boxLogin .link, .boxSignup .link {
+  color: black;
+}
+
+.boxLogin .errForm, .boxSignup .errForm {
+  color: red;
+  font-weight: bolder;
+}
+/*# sourceMappingURL=forms.css.map */

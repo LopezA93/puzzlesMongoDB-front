@@ -1,0 +1,40 @@
+.itemBox {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: justify !important;
+      -ms-flex-pack: justify !important;
+          justify-content: space-between !important;
+  border-bottom: 1px solid black;
+  background-color: white;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-radius: 20px;
+}
+
+.itemBox img {
+  width: 70px;
+  height: 120px;
+}
+
+.itemBox p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 1rem;
+}
+
+.itemBox .btnDeleteItem {
+  color: black;
+}
+
+@media screen and (max-width: 550px) {
+  .itemBox img {
+    margin: 0 auto;
+  }
+  .itemBox p {
+    margin: 1rem;
+    font-size: 1rem;
+  }
+}
+/*# sourceMappingURL=cart.css.map */

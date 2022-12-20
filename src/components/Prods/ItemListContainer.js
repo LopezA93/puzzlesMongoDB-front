@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import CircularIndeterminate from "../CircularProgress/Circular";
 import { Container, Box, Grid } from "@mui/material";
 import "./styles/prodsContainer.scss";
-
+import { authData } from "../../services/authJWT";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 const ItemListContainer = () => {
@@ -15,8 +15,8 @@ const ItemListContainer = () => {
   if (error) return "Ha ocurrido un error: " + error.message;
 
   const categorys = ["cerveza", "comun"];
-  const userJSON = localStorage.getItem("login");
-  const user = JSON.parse(userJSON);
+  const user = authData()
+
   return (
     <>
       {!user ? (

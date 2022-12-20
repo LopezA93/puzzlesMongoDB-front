@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACN,MAAM,EAAE,oBAAoB;CAE/B;;AACD,AAAA,EAAE,CAAC;EACC,eAAe,EAAE,IAAI;EACrB,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,YAAY;CAEhC",
+    "sources": [
+        "../src/components/Prods/styles/prodsContainer.scss"
+    ],
+    "names": [],
+    "file": "prodsContainer.css"
+}

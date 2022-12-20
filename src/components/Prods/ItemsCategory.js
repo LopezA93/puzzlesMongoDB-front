@@ -8,6 +8,7 @@ import { Link, useParams } from "react-router-dom";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { authData } from "../../services/authJWT";
 const NavCategory = () => {
   const { category } = useParams();
 
@@ -28,8 +29,8 @@ const NavCategory = () => {
   if (isLoading) return <CircularIndeterminate />;
 
   if (error) return "Ha ocurrido un error: " + error.message;
-  const userJSON = localStorage.getItem("login");
-  const user = JSON.parse(userJSON);
+  const user = authData()
+
   return (
     <>
       {!user ? (
