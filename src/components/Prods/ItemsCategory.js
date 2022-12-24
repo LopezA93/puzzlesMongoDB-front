@@ -17,6 +17,7 @@ const NavCategory = () => {
     const { data } = await getProductsByCategory(category).catch((err) =>
       console.log(err)
     );
+
     return data;
   };
 

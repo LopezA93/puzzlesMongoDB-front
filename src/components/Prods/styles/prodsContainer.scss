@@ -1,10 +1,15 @@
 .cardProd {
     margin: 2rem auto !important;
-
+    box-shadow: 0px 10px 5px 0px #0000009e !important
 }
 ul {
     list-style-type: none;
     display: flex;
     justify-content: space-around;
    
+}
+.btnCategory{
+    background-color: #9c27b0 !important;
+    color: white !important;
+    border-color: black !important
 }

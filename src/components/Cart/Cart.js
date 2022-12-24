@@ -35,7 +35,7 @@ const CartPage = () => {
 
             <Container className="finBox">
               <h4>TOTAL: ${total()}</h4>
-              <Button className="btnFinCompra" onClick={()=> navigate('/checkout')}>
+              <Button className="btnFinCompra" variant="contained" onClick={()=> navigate('/checkout')}>
                 Continuar
               </Button>
             </Container>
@@ -46,7 +46,7 @@ const CartPage = () => {
               No hay productos en el carrito, para comprar agregue productos
             </p>
             <Link to={"/products"}>
-              <Button className="btnVolver">Productos</Button>
+              <Button  variant='contained' color='warning' className="btnVolver">Productos</Button>
             </Link>
           </div>
         )}

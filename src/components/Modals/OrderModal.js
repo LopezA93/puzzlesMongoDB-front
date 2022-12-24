@@ -12,7 +12,7 @@ const OrderModal = ({ texto, subtexto, colorBtn, order, total }) => {
   return (
     <Box
       sx={{
-        height: 600,
+        height: 650,
         flexGrow: 1,
         minWidth: 300,
         transform: "translateZ(0)",

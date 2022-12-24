@@ -14,7 +14,7 @@ const ItemListContainer = () => {
 
   if (error) return "Ha ocurrido un error: " + error.message;
 
-  const categorys = ["cerveza", "comun"];
+  const categorys = ["cervezas", "comun", "aperitivo"];
   const user = authData()
 
   return (
@@ -43,7 +43,7 @@ const ItemListContainer = () => {
                 return (
                   <Link key={index} to={i}>
                     {" "}
-                    <Button variant="outlined" color="primary">
+                    <Button className='btnCategory' variant="outlined" color="primary">
                       <li>{i}</li>
                     </Button>
                   </Link>

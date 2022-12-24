@@ -184,7 +184,7 @@ const Checkout = () => {
                 </div>
                 <hr />
                 <h4>Total: ${total()}</h4>
-                <Button className="btnFinCompra" onClick={handelOrder}>
+                <Button className="btnFinCompra" variant='outlined' onClick={handelOrder}>
                   FINALIZAR COMPRA
                 </Button>
               </Grid>

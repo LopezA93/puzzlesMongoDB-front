@@ -12,7 +12,7 @@ const ErrorModal = ({ texto, subtexto, colorBtn }) => {
   return (
     <Box
       sx={{
-        height: 600,
+        height: 800,
         flexGrow: 1,
         minWidth: 300,
         transform: "translateZ(0)",
