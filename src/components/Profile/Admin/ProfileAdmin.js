@@ -55,14 +55,14 @@ const ProfileAdmin = () => {
         <Container>
           <h1>Admin profile</h1>
           <Grid container spacing={2}>
-            <Grid item xs={7}>
+            <Grid item xs={12} sm={7}>
               <ProdsList />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={4}>
               <h1>Ingresar nuevo producto</h1>
               <FormPostProduct />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs={12} sm={6}>
               <BtnLogout />
             </Grid>
           </Grid>

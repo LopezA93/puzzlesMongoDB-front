@@ -39,7 +39,7 @@ const ProfileUser = () => {
   return (
     <Container>
       <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4} >
           <h2>Datos Personales</h2>
           <div>
             <p>
@@ -59,12 +59,12 @@ const ProfileUser = () => {
             </p>
           </div>
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={12} sm={7}>
           <h2>Compras realizadas</h2>
 
           <Orders />
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={12} sm={1}>
           <BtnLogout />
         </Grid>
       </Grid>

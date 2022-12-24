@@ -61,7 +61,7 @@ const FormSignup = () => {
       email: "",
       password: "",
       direccion: "",
-      ciudad:"",
+      ciudad: "",
       telefono: "",
     },
     validationSchema: validationSchema,
@@ -69,77 +69,85 @@ const FormSignup = () => {
   });
 
   return (
-    <Container className="boxSignup">
+    <Container className="boxSignup" fixed>
       <div className="errForm">{!success ? error : success}</div>
-      {loading ? <CircularIndeterminate/> : (<><h1>Signup</h1>
-      <form onSubmit={formik.handleSubmit}>
-        <TextField
-          id="nombre"
-          name="nombre"
-          label="Nombre completo"
-          value={formik.values.nombre}
-          onChange={formik.handleChange}
-          error={formik.touched.nombre && Boolean(formik.errors.nombre)}
-          helperText={formik.touched.nombre && formik.errors.nombre}
-        />
-        <TextField
-          id="email"
-          name="email"
-          label="Email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-        />
-        <TextField
-          id="password"
-          name="password"
-          label="Password"
-          type="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password && formik.errors.password}
-        />
-        <TextField
-          id="direccion"
-          name="direccion"
-          label="Direccion"
-          value={formik.values.direccion}
-          onChange={formik.handleChange}
-          error={formik.touched.direccion && Boolean(formik.errors.direccion)}
-          helperText={formik.touched.direccion && formik.errors.direccion}
-        />
-        <TextField
-          id="ciudad"
-          name="ciudad"
-          label="Ciudad"
-          value={formik.values.ciudad}
-          onChange={formik.handleChange}
-          error={formik.touched.ciudad && Boolean(formik.errors.ciudad)}
-          helperText={formik.touched.ciudad && formik.errors.ciudad}
-        />
-        <TextField
-          id="telefono"
-          name="telefono"
-          label="Telefono"
-          value={formik.values.telefono}
-          onChange={formik.handleChange}
-          error={formik.touched.telefono && Boolean(formik.errors.telefono)}
-          helperText={formik.touched.telefono && formik.errors.telefono}
-        />
-        <Button
-          className="btnSignup"
-          color="error"
-          variant="contained"
-          type="submit"
-        >
-          Signup
-        </Button>
-      </form>
-      <Link className="link" to="/login">
-        Si ya tenes cuenta, ingresa aquí
-      </Link></>)}
+      {loading ? (
+        <CircularIndeterminate />
+      ) : (
+        <>
+          <h1>Signup</h1>
+          <form onSubmit={formik.handleSubmit}>
+            <TextField
+              id="nombre"
+              name="nombre"
+              label="Nombre completo"
+              value={formik.values.nombre}
+              onChange={formik.handleChange}
+              error={formik.touched.nombre && Boolean(formik.errors.nombre)}
+              helperText={formik.touched.nombre && formik.errors.nombre}
+            />
+            <TextField
+              id="email"
+              name="email"
+              label="Email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+            />
+            <TextField
+              id="password"
+              name="password"
+              label="Password"
+              type="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+            />
+            <TextField
+              id="direccion"
+              name="direccion"
+              label="Direccion"
+              value={formik.values.direccion}
+              onChange={formik.handleChange}
+              error={
+                formik.touched.direccion && Boolean(formik.errors.direccion)
+              }
+              helperText={formik.touched.direccion && formik.errors.direccion}
+            />
+            <TextField
+              id="ciudad"
+              name="ciudad"
+              label="Ciudad"
+              value={formik.values.ciudad}
+              onChange={formik.handleChange}
+              error={formik.touched.ciudad && Boolean(formik.errors.ciudad)}
+              helperText={formik.touched.ciudad && formik.errors.ciudad}
+            />
+            <TextField
+              id="telefono"
+              name="telefono"
+              label="Telefono"
+              value={formik.values.telefono}
+              onChange={formik.handleChange}
+              error={formik.touched.telefono && Boolean(formik.errors.telefono)}
+              helperText={formik.touched.telefono && formik.errors.telefono}
+            />
+            <Button
+              className="btnSignup"
+              color="error"
+              variant="contained"
+              type="submit"
+            >
+              Signup
+            </Button>
+          </form>
+          <Link className="link" to="/login">
+            Si ya tenes cuenta, ingresa aquí
+          </Link>
+        </>
+      )}
     </Container>
   );
 };

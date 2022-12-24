@@ -44,7 +44,6 @@ const FormPostProduct = () => {
     const postProduct = await postProd(nuevoProducto);
 
     if (postProduct.status === 200) {
-      // alert("Producto agregado correctamente");
       setSuccessProd(true)
       
     } else {
@@ -52,38 +51,7 @@ const FormPostProduct = () => {
     }
   };
 
-  //   const [nuevosValores, setNuevosValores] = useState({
-  //     precio: "",
-  //     stock: "",
-  //   });
-
-  //   const onChangeValores = (e) => {
-  //     e.preventDefault();
-
-  //     setNuevosValores({
-  //       ...nuevosValores,
-  //       [e.target.name]: e.target.value,
-  //     });
-  //     console.log(nuevosValores);
-  //   };
-
-  //   const editarProducto = async (id) => {
-  //     const productosList = doc(db, "bebidas", `${id}`);
-
-  //     await updateDoc(productosList, {
-  //       precio: parseInt(nuevosValores.precio),
-  //       stock: parseInt(nuevosValores.stock),
-  //     });
-
-  //     console.log("Producto editado correctamente");
-  //   };
-
-  //   const eliminarProducto = async (id) => {
-  //     const productosList = doc(db, "bebidas", `${id}`);
-  //     await deleteDoc(productosList);
-  //     console.log("Producto eliminado");
-  //     navigate("/panel-admin");
-  //   };
+  
 
   const handleChange = (e) => {
     setNuevoProducto({

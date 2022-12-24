@@ -38,7 +38,7 @@ const ItemListContainer = () => {
           <h2>Productos</h2>
           <Grid>
             <h3>Categorias</h3>
-            <ul>
+            <ul className="ListCategory">
               {categorys.map((i, index) => {
                 return (
                   <Link key={index} to={i}>

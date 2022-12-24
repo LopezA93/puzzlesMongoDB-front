@@ -36,12 +36,14 @@ function Navbar(props) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
+        {navItems.map((item, index) => (
+          <Link to={item} key={index} >
+            <ListItem  disablePadding>
+              <ListItemButton sx={{ textAlign: "start" }}>
+                <ListItemText primary={item} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Box>
@@ -79,25 +81,25 @@ function Navbar(props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button
-                className="btnNav"
-                variant={"text"}
-                key={item}
-                sx={{ color: "#fff" }}
-              >
-                <Link to={item}>{item}</Link>
-              </Button>
+              <Link to={item}  key={item}>
+                <Button
+                  className="btnNav"
+                  variant={"text"}
+                 
+                  sx={{ color: "#fff" }}
+                >
+                  {item}
+                </Button>
+              </Link>
             ))}
           </Box>
-          <Box xs={{display:'flex'}}>
-          <Button className="btnNav" variant={"text"} sx={{ color: "#fff" }}>
-            <Link to={"/cart"}>
-              <ShoppingCartIcon />
-              
-            </Link>
-            {cantItems === 0 ? '' : <p>{cantItems}</p> }
-           
-          </Button>
+          <Box xs={{ display: "flex" }}>
+            <Button className="btnNav" variant={"text"} sx={{ color: "#fff" }}>
+              <Link to={"/cart"}>
+                <ShoppingCartIcon />
+              </Link>
+              {cantItems === 0 ? "" : <p>{cantItems}</p>}
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>

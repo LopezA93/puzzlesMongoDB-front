@@ -41,13 +41,13 @@ const Checkout = () => {
   };
 
   const saveNewAdress = (e) => {
-    // console.log(datos)
+
     setNewAdress(false);
   };
   const deletCart = async () => {
     const email = user.email;
     const response = await deleteCart(email);
-    // console.log(response)
+
   };
 
   const handelClose = () => setOpenModal(false);
@@ -70,8 +70,8 @@ const Checkout = () => {
     };
 
     const response = await sendOrder(order);
-    console.log("response", response);
-    if (!response || response.status === 200) {
+
+    if ( response.status === 200) {
       setCartProducts([]);
       setOpenModal(true);
       setOrderGenerada(response.data);
@@ -107,7 +107,7 @@ const Checkout = () => {
           <Container>
             <h1>Checkout</h1>
             <Grid container spacing={2}>
-              <Grid item xs={4}>
+              <Grid item xs={12} sm={4}>
                 <h3>Datos de envío</h3>
                 <hr />
                 <p>Direccion: {datos.direccion}</p>
@@ -166,7 +166,7 @@ const Checkout = () => {
                   ""
                 )}
               </Grid>
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={8}>
                 <h3>Productos</h3>
                 <hr />
 
@@ -219,7 +219,7 @@ const Checkout = () => {
                   </>
                 ) : (
                   <>
-                    {console.log(totalCarro)}
+
                     <OrderModal
                       texto={
                         "Muchas gracias por su compra! Su orden se ha generado exitosamente."
