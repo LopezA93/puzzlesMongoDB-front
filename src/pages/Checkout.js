@@ -9,7 +9,7 @@ import CircularIndeterminate from "../components/CircularProgress/Circular";
 import Modal from "@mui/material/Modal";
 import { Link } from "react-router-dom";
 
-import ErrorModal from "../components/Modals/ErrorModals";
+import InfoModal from "../components/Modals/InfoModal";
 import OrderModal from "../components/Modals/OrderModal";
 import { useState, useContext } from "react";
 import { authData } from "../services/authJWT";
@@ -73,6 +73,7 @@ const Checkout = () => {
 
     if ( response.status === 200) {
       setCartProducts([]);
+      localStorage.removeItem('productos')
       setOpenModal(true);
       setOrderGenerada(response.data);
     } else {
@@ -80,14 +81,7 @@ const Checkout = () => {
     }
   };
   const totalCarro = orderGenerada.total;
-  // const mercadoPagoPoint= async () => {
-  //   let order = {
-  //     numero: orderGenerada.numero,
-  //     total: orderGenerada.total
-  //   }
-  //   const data = await pointMP(total)
-
-  // }
+ 
   return (
     <>
       {!user ? (
@@ -191,6 +185,7 @@ const Checkout = () => {
             </Grid>
           </Container>
           <Container>
+            
             <Modal
               sx={{
                 height: 800,
@@ -205,11 +200,12 @@ const Checkout = () => {
               open={openModal}
             >
               <Box>
-                {!orderGenerada ? (
+
+                {orderGenerada == false ? 
                   <CircularIndeterminate />
-                ) : error ? (
+                 : error ? (
                   <>
-                    <ErrorModal
+                    <InfoModal
                       texto={
                         "Hubo un error en el intento de realizar la compra"
                       }

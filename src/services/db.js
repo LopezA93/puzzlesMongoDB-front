@@ -109,12 +109,7 @@ const sendOrder = async (values) => {
   return response
 }
 
-//mp
 
-const pointMP= async (values) => {
-  const response = await axios.post(`${url}/mercadopago`, values)
-  return response
-}
 
 export {
   getProducts,
@@ -132,5 +127,5 @@ export {
   saveCart,
   deleteCart,
   sendOrder,
-  pointMP
+
 };

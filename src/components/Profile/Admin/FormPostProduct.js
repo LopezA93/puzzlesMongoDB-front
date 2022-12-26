@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { postProd } from "../../../services/db";
 import { useNavigate } from "react-router-dom";
 import "./style/profileAdmin.scss";
-import ErrorModal from '../../Modals/ErrorModals'
+import InfoModal from '../../Modals/InfoModal'
 
 const FormPostProduct = () => {
   //   const { getProducts } = useContext(ItemContext);
@@ -80,7 +80,7 @@ const FormPostProduct = () => {
   //   }, []);
   return (
     <>
-      {successProd? <ErrorModal
+      {successProd? <InfoModal
       texto={'Producto cargado correctamente'}
       subtexto={'Haga click para volver'}
       /> :

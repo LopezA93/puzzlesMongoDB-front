@@ -4,7 +4,7 @@ import CircularIndeterminate from "../../CircularProgress/Circular";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import ErrorModal from "../../Modals/ErrorModals";
+import InfoModal from "../../Modals/InfoModal";
 const ProdsList = () => {
   const navigate = useNavigate();
   const [edit, setEdit] = useState(false)
@@ -60,7 +60,7 @@ const ProdsList = () => {
   return (
     <>
     {
-      edit? <ErrorModal
+      edit? <InfoModal
       texto={'Producto cargado correctamente'}
       subtexto={'Haga click para volver'}
       />  :

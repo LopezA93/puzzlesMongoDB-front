@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-const ErrorModal = ({ texto, subtexto, colorBtn }) => {
+const InfoModal = ({ texto, subtexto, colorBtn }) => {
   const rootRef = React.useRef(null);
   const navigate = useNavigate();
 
@@ -65,4 +65,4 @@ const ErrorModal = ({ texto, subtexto, colorBtn }) => {
     </Box>
   );
 };
-export default ErrorModal;
+export default InfoModal;

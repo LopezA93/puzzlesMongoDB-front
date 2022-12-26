@@ -94,12 +94,14 @@ function Navbar(props) {
             ))}
           </Box>
           <Box xs={{ display: "flex" }}>
+          <Link to={"/cart"}>
             <Button className="btnNav" variant={"text"} sx={{ color: "#fff" }}>
-              <Link to={"/cart"}>
+              
                 <ShoppingCartIcon />
-              </Link>
-              {cantItems === 0 ? "" : <p>{cantItems}</p>}
+              
+              {cantItems === 0 ? "" : <p >{cantItems}</p>}
             </Button>
+            </Link>
           </Box>
         </Toolbar>
       </AppBar>

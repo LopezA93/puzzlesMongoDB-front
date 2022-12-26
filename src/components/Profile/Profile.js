@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 import BtnLogout from "./Logout";
 import Orders from "./Orders";
 import "./style/profile.scss";
-import ErrorModal from "../Modals/ErrorModals";
+import InfoModal from "../Modals/InfoModal";
 import CircularIndeterminate from "../CircularProgress/Circular";
 const ProfileUser = () => {
   const data = async () => {
@@ -28,7 +28,7 @@ const ProfileUser = () => {
   if (error) {
     localStorage.removeItem("login");
     return (
-      <ErrorModal
+      <InfoModal
         texto={"Credenciales invalidas"}
         subtexto={"Por favor vuelva a ingresar."}
         colorBtn={"secondary"}

@@ -6,7 +6,7 @@ import { authData } from "../../../services/authJWT";
 import { useQuery } from "react-query";
 import BtnLogout from "../Logout";
 import Orders from "../Orders";
-import ErrorModal from "../../Modals/ErrorModals";
+import InfoModal from "../../Modals/InfoModal";
 import CircularIndeterminate from "../../CircularProgress/Circular";
 import FormPostProduct from "./FormPostProduct";
 import ProdsList from "./ProdsList";
@@ -35,7 +35,7 @@ const ProfileAdmin = () => {
     localStorage.removeItem("login");
 
     return (
-      <ErrorModal
+      <InfoModal
         texto={"Credenciales invalidas"}
         subtexto={"No tiene permisos para esta sección."}
         colorBtn={"secondary"}
@@ -46,7 +46,7 @@ const ProfileAdmin = () => {
   return (
     <>
       {userAdmin.role !== "admin" ? (
-        <ErrorModal
+        <InfoModal
           texto="Credenciales invalidas"
           subtexto="No tiene permisos para esta sección."
           colorBtn="secondary"
@@ -62,7 +62,7 @@ const ProfileAdmin = () => {
               <h1>Ingresar nuevo producto</h1>
               <FormPostProduct />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={1}>
               <BtnLogout />
             </Grid>
           </Grid>

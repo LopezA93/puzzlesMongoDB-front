@@ -4,7 +4,6 @@ import ItemListContainer from "./components/Prods/ItemListContainer";
 import FormLogin from "./components/Forms/FormLogin";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import FormSignup from "./components/Forms/FormSignup";
-import MensajesContainer from "./components/Messages/MensajesContainer";
 import ProfileUser from "./components/Profile/Profile";
 import NavCategory from "./components/Prods/ItemsCategory";
 import ProfileAdmin from "./components/Profile/Admin/ProfileAdmin";
@@ -28,7 +27,6 @@ function App() {
             <Route path="/login" element={<FormLogin />} />
             <Route path="/signup" element={<FormSignup />} />
             <Route path="/products" element={<ItemListContainer />} />
-            {/* <Route path="/chat" element={<MensajesContainer />} /> */}
             <Route
               path="/profile"
               element={
