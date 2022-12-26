@@ -33,7 +33,7 @@ const CartModal = () => {
 
     <Box
       sx={{
-        height: 800,
+        height: 600,
         flexGrow: 1,
         minWidth: 300,
         transform: "translateZ(0)",
@@ -41,6 +41,7 @@ const CartModal = () => {
           display: "none",
         },
       }}
+      
       ref={rootRef}
     >
       <Modal
@@ -76,14 +77,14 @@ const CartModal = () => {
           </Typography>
           <Link to={"/products"}>
             {" "}
-            <Button variant="contained" color="primary">
+            <Button variant="contained" sx={{ margin:1 }} color="primary">
               {" "}
               Seguir comprando
             </Button>
           </Link>
           <Link to={"/cart"}>
             {" "}
-            <Button variant="contained" color="success" onClick={newCart}
+            <Button variant="contained" color="success" sx={{ margin:1 }} onClick={newCart}
             >
               {" "}
               Ir al carrito

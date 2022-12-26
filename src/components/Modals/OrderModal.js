@@ -12,6 +12,15 @@ const OrderModal = ({ texto, subtexto, colorBtn, order, total }) => {
   return (
     <Box
       sx={{
+        height: 850,
+        flexGrow: 1,
+        minWidth: 300,
+        transform: "translateZ(0)",
+        "@media all and (-ms-high-contrast: none)": {
+          display: "none",
+        },
+      }}
+      md={{
         height: 650,
         flexGrow: 1,
         minWidth: 300,

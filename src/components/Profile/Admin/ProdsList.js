@@ -4,8 +4,10 @@ import CircularIndeterminate from "../../CircularProgress/Circular";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import ErrorModal from "../../Modals/ErrorModals";
 const ProdsList = () => {
   const navigate = useNavigate();
+  const [edit, setEdit] = useState(false)
   const {
     data: prodsAdmin,
     error,
@@ -27,9 +29,14 @@ const ProdsList = () => {
 
   const editItem = async (id) => {
     try {
-      const { data } = await putProd(id, newValue);
-      console.log(data);
-      // alert('producto actualizado correctamente', data)
+      const productEdit = await putProd(id, newValue);
+      console.log(productEdit);
+      if (productEdit.status === 200) {
+        setEdit(true)
+        
+      } else {
+        alert("error");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -52,6 +59,12 @@ const ProdsList = () => {
 
   return (
     <>
+    {
+      edit? <ErrorModal
+      texto={'Producto cargado correctamente'}
+      subtexto={'Haga click para volver'}
+      />  :
+     <>
       <h1>Listado de productos</h1>
       <div className="Items">
         {prodsAdmin.map((producto, index) => {
@@ -100,6 +113,7 @@ const ProdsList = () => {
           );
         })}
       </div>
+      </>}
     </>
   );
 };

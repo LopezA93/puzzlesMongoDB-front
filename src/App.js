@@ -20,27 +20,41 @@ import { RequireAuth } from "./services/AuthProtected";
 function App() {
   return (
     <>
-
-        <CartProvider>
-          <BrowserRouter>
-            <Navbar />
-            <Routes>
-              <Route index element={<Home />} />
-              <Route path="/login" element={<FormLogin />} />
-              <Route path="/signup" element={<FormSignup />} />
-              <Route path="/products" element={<ItemListContainer />} />
-              {/* <Route path="/chat" element={<MensajesContainer />} /> */}
-              <Route path="/profile" element={<RequireAuth> <Profile /></RequireAuth>} />
-              <Route path="/products/:category" element={<NavCategory />} />
-              {/* <Route path="/admin" element={<ProfileAdmin />} /> */}
-              <Route path="*" element={<Error404 />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/modalCart" element={<CartModal />} />
-              <Route path="/checkout" element={ <RequireAuth> <Checkout /></RequireAuth>} />
-            </Routes>
-          </BrowserRouter>
-        </CartProvider>
-
+      <CartProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/login" element={<FormLogin />} />
+            <Route path="/signup" element={<FormSignup />} />
+            <Route path="/products" element={<ItemListContainer />} />
+            {/* <Route path="/chat" element={<MensajesContainer />} /> */}
+            <Route
+              path="/profile"
+              element={
+                <RequireAuth>
+                  {" "}
+                  <Profile />
+                </RequireAuth>
+              }
+            />
+            <Route path="/products/:category" element={<NavCategory />} />
+            {/* <Route path="/admin" element={<ProfileAdmin />} /> */}
+            <Route path="*" element={<Error404 />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/modalCart" element={<CartModal />} />
+            <Route
+              path="/checkout"
+              element={
+                <RequireAuth>
+                  {" "}
+                  <Checkout />
+                </RequireAuth>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </>
   );
 }

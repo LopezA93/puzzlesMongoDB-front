@@ -15,22 +15,22 @@ const ItemListContainer = () => {
   if (error) return "Ha ocurrido un error: " + error.message;
 
   const categorys = ["cervezas", "comun", "aperitivo"];
-  const user = authData()
+  const user = authData();
 
   return (
     <>
       {!user ? (
         <>
-        <Container>
-          <h1>
-            Debe loguearse para ingresar a esta ruta, por favor ingrese aquí{" "}
-          </h1>
-          <Link to={"/login"}>
-            {" "}
-            <Button color={"primary"} variant={"outlined"}>
-              Login
-            </Button>
-          </Link>
+          <Container>
+            <h1>
+              Debe loguearse para ingresar a esta ruta, por favor ingrese aquí{" "}
+            </h1>
+            <Link to={"/login"}>
+              {" "}
+              <Button color={"primary"} variant={"outlined"}>
+                Login
+              </Button>
+            </Link>
           </Container>
         </>
       ) : (
@@ -43,7 +43,11 @@ const ItemListContainer = () => {
                 return (
                   <Link key={index} to={i}>
                     {" "}
-                    <Button className='btnCategory' variant="outlined" color="primary">
+                    <Button
+                      className="btnCategory"
+                      variant="outlined"
+                      color="primary"
+                    >
                       <li>{i}</li>
                     </Button>
                   </Link>
@@ -54,7 +58,7 @@ const ItemListContainer = () => {
           <Grid container spacing={2}>
             {prods.map((item, index) => {
               return (
-                <Grid key={index} item xs={6}>
+                <Grid key={index} item xs={12} md={6}>
                   <ProdCard prod={item} />
                 </Grid>
               );

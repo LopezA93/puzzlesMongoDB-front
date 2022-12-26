@@ -30,22 +30,22 @@ const NavCategory = () => {
   if (isLoading) return <CircularIndeterminate />;
 
   if (error) return "Ha ocurrido un error: " + error.message;
-  const user = authData()
+  const user = authData();
 
   return (
     <>
       {!user ? (
         <>
-        <Container>
-          <h1>
-            Debe loguearse para ingresar a esta ruta, por favor ingrese aquí{" "}
-          </h1>
-          <Link to={"/login"}>
-            {" "}
-            <Button color={"primary"} variant={"outlined"}>
-              Login
-            </Button>
-          </Link>
+          <Container>
+            <h1>
+              Debe loguearse para ingresar a esta ruta, por favor ingrese aquí{" "}
+            </h1>
+            <Link to={"/login"}>
+              {" "}
+              <Button color={"primary"} variant={"outlined"}>
+                Login
+              </Button>
+            </Link>
           </Container>
         </>
       ) : prodsCategory.length === undefined ? (
@@ -61,7 +61,9 @@ const NavCategory = () => {
           </Link>
           <Grid container spacing={2}>
             {prodsCategory.map((item, index) => (
-              <ProdCard key={index} prod={item} />
+              <Grid key={index} item xs={12} md={6}>
+                <ProdCard prod={item} />
+              </Grid>
             ))}
           </Grid>
         </Container>
