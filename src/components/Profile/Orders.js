@@ -79,17 +79,7 @@ const Orders = () => {
                     
                   </AccordionDetails>
                 </Accordion>
-                {/* <p>Orden Num. {order.numero}</p>
-                <p>Fecha: {order.estado}</p>
-                <div>
-                  Productos:
-                  {order.productos.map((prod) => (
-                    <div key={prod.productId}>
-                      <p>Nombre: {prod.nombre}   Cantidad:{prod.cantidad}   Precio:
-                      {prod.precio}</p>
-                    </div>
-                  ))}
-                </div> */}
+
               </Stack>
             );
           })}

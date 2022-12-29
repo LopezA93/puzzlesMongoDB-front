@@ -5,6 +5,7 @@ import FormLogin from "./components/Forms/FormLogin";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import FormSignup from "./components/Forms/FormSignup";
 import ProfileUser from "./components/Profile/Profile";
+import MensajesContainer from "./components/Messages/MensajesContainer";
 import NavCategory from "./components/Prods/ItemsCategory";
 import ProfileAdmin from "./components/Profile/Admin/ProfileAdmin";
 import { CartProvider } from "./context/CartContext";
@@ -37,6 +38,8 @@ function App() {
               }
             />
             <Route path="/products/:category" element={<NavCategory />} />
+            {/* <Route path="/chat" element={<MensajesContainer />} /> */}
+
             {/* <Route path="/admin" element={<ProfileAdmin />} /> */}
             <Route path="*" element={<Error404 />} />
             <Route path="/cart" element={<CartPage />} />

@@ -15,9 +15,10 @@ import { useState, useContext } from "react";
 import { authData } from "../services/authJWT";
 
 const Checkout = () => {
-  const { cartProducts, setCartProducts, total, delProd } = useContext(CartContext);
+  const { cartProducts, setCartProducts, total, delProd } =
+    useContext(CartContext);
 
-  const user = authData()
+  const user = authData();
   const [newAdress, setNewAdress] = useState(false);
   const [loading, setLoading] = useState(false);
   const [datos, setDatos] = useState({
@@ -41,19 +42,18 @@ const Checkout = () => {
   };
 
   const saveNewAdress = (e) => {
-
     setNewAdress(false);
   };
   const deletCart = async () => {
     const email = user.email;
     const response = await deleteCart(email);
-
   };
 
   const handelClose = () => setOpenModal(false);
   const handelOrder = async () => {
+    setOpenModal(true);
     deletCart();
-
+    setLoading(true)
     const prods = cartProducts.map((i) => {
       return {
         nombre: i.nombre,
@@ -70,18 +70,18 @@ const Checkout = () => {
     };
 
     const response = await sendOrder(order);
-
-    if ( response.status === 200) {
+    
+    if (response.status === 200) {
       setCartProducts([]);
-      localStorage.removeItem('productos')
-      setOpenModal(true);
+      localStorage.removeItem("productos");
       setOrderGenerada(response.data);
+      setLoading(false)
     } else {
       setError(true);
     }
   };
   const totalCarro = orderGenerada.total;
- 
+
   return (
     <>
       {!user ? (
@@ -178,14 +178,18 @@ const Checkout = () => {
                 </div>
                 <hr />
                 <h4>Total: ${total()}</h4>
-                <Button className="btnFinCompra" variant='outlined' onClick={handelOrder}>
+                <Button
+                  className="btnFinCompra"
+                  variant="outlined"
+                  onClick={handelOrder}
+                  disabled={cartProducts.length === 0 ? true : false}
+                >
                   FINALIZAR COMPRA
                 </Button>
               </Grid>
             </Grid>
           </Container>
           <Container>
-            
             <Modal
               sx={{
                 height: 800,
@@ -200,10 +204,9 @@ const Checkout = () => {
               open={openModal}
             >
               <Box>
-
-                {orderGenerada == false ? 
+                {loading ? (
                   <CircularIndeterminate />
-                 : error ? (
+                ) : error ? (
                   <>
                     <InfoModal
                       texto={
@@ -215,7 +218,6 @@ const Checkout = () => {
                   </>
                 ) : (
                   <>
-
                     <OrderModal
                       texto={
                         "Muchas gracias por su compra! Su orden se ha generado exitosamente."
