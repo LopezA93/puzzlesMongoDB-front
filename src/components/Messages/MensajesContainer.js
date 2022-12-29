@@ -6,8 +6,9 @@ import io from "socket.io-client";
 import { Container, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-const socket = io.connect("http://localhost:8081/");
 const MensajesContainer = () => {
+const socket = io.connect("http://localhost:8081/");
+
   const [mensajes, setMensajes] = useState([]);
   const [newMensaje, setNewMensaje] = useState("");
 
