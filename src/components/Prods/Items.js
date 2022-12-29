@@ -1,6 +1,6 @@
 import AspectRatio from "@mui/joy/AspectRatio";
 import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
+
 import Card from "@mui/joy/Card";
 
 import Typography from "@mui/joy/Typography";
@@ -8,7 +8,7 @@ import Typography from "@mui/joy/Typography";
 import ItemCount from "../ItemCount/ItemCount";
 import CartContext from "../../context/CartContext";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext,  } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function ProdCard({ prod }) {

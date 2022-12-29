@@ -25,7 +25,7 @@ const CartModal = () => {
 
     }
     const response = await saveCart(values)
-    // console.log(response)
+
   }
 
   return (

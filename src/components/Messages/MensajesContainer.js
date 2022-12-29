@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+
 import { getMessages, postMessage } from "../../services/db";
 import Mensajes from "./MensajesCard";
 import io from "socket.io-client";
@@ -33,8 +33,7 @@ const MensajesContainer = () => {
       texto: newMensaje,
     };
     const send = await postMessage(newMsj);
-    // console.log(newMsj);
-    // refetch()
+
     setNewMensaje("");
   };
 

@@ -1,9 +1,7 @@
-import { useFormik } from "formik";
-import * as yup from "yup";
-import { Link, redirect } from "react-router-dom";
+
 import Button from "@mui/material/Button";
 import TextField from "@mui/joy/TextField";
-import { Container } from "@mui/material";
+
 import { useEffect, useState } from "react";
 import { postProd } from "../../../services/db";
 import { useNavigate } from "react-router-dom";
@@ -11,9 +9,8 @@ import "./style/profileAdmin.scss";
 import InfoModal from '../../Modals/InfoModal'
 
 const FormPostProduct = () => {
-  //   const { getProducts } = useContext(ItemContext);
-  //   const [productos, setProductos] = useState([]);\
-  const [user, setUser] = useState();
+ 
+
   const [successProd, setSuccessProd] = useState(false);
   const navigate = useNavigate();
 
@@ -60,24 +57,7 @@ const FormPostProduct = () => {
     });
   };
 
-  //   const fileHandle = async (e) => {
-  //     const file = e.target.files[0];
-  //     const archivoRef = ref(storage, `productos/${file.name}`);
-  //     await uploadBytes(archivoRef, file);
-  //     urlDescarga = await getDownloadURL(archivoRef);
-  //   };
-
-  //   useEffect(() => {
-  //     const loggedUserJSON = localStorage.getItem("login");
-  //     console.log(loggedUserJSON)
-  //         if (loggedUserJSON.role == "admin") {
-  //           const user = JSON.parse(loggedUserJSON);
-  //           setUser(user);
-  //           return;
-  //         } else {
-  //           navigate("/");
-  //         }
-  //   }, []);
+  
   return (
     <>
       {successProd? <InfoModal

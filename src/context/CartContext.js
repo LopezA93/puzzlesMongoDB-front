@@ -6,9 +6,7 @@ const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState(
     JSON.parse(localStorage.getItem("productos")) || []
   );
-  const reloadStore = (i) => {
-    localStorage.setItem("productos", JSON.stringify(i));
-  };
+  
 
   const agregarProductoCarro = (product, cantidad) => {
     let existente = cartProducts.find(

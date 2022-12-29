@@ -1,8 +1,9 @@
 import axios from "axios";
 import authHeader from "./authJWT";
 
-const url = "https://puzzles-bar.vercel.app";
-// const url = 'http://localhost:8081'
+
+const url = process.env.REACT_APP_BASE_URL
+
 
 // products
 
