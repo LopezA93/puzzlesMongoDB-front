@@ -61,9 +61,9 @@ const FormLogin = () => {
   }, []);
   return (
     <Container className="boxLogin">
-      <div className="errForm">{error ? error : ""}</div>
+      <span className="errForm">{error ? error : ""}</span>
 
-      <div>
+      
         {user ? (
           navigate("/profile")
 
@@ -109,7 +109,7 @@ const FormLogin = () => {
             </Link>
           </>
         )}
-      </div>
+      
     </Container>
   );
 };

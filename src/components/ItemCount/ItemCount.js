@@ -13,12 +13,12 @@ const ItemCount = ({ stock, addItem }) => {
 
   return (
     <>
-      <Button onClick={add} disabled={number === stock ? true : false}>
+      <Button color="secondary" onClick={add} disabled={number === stock ? true : false}>
         {" "}
         +{" "}
       </Button>{" "}
       {number}{" "}
-      <Button onClick={rem} disabled={number === min ? true : false}>
+      <Button color="secondary" onClick={rem} disabled={number === min ? true : false}>
         -
       </Button>
       <Button

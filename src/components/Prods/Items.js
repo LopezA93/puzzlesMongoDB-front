@@ -38,6 +38,12 @@ export default function ProdCard({ prod }) {
           <Typography fontSize="lg" fontWeight="lg">
             ${precio}
           </Typography>
+          
+        </div>
+        <div>
+        <Typography marginLeft={2} textColor='#0808088f' fontSize="sm" >
+            Stock {stock}
+          </Typography>
         </div>
 
         <ItemCount stock={stock} addItem={addtoCart} />

@@ -87,7 +87,7 @@ const FormPostProduct = () => {
           <select name="categoria" required onChange={handleChange}>
             <option>Eliga la categoria de la bebida</option>
             <option>cervezas</option>
-            <option>aperitivos</option>
+            <option>aperitivo</option>
             <option>vinos</option>
             <option>gaseosas</option>
             <option>comun</option>

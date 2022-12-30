@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-
+import './style/chat.scss'
 import { getMessages, postMessage } from "../../services/db";
 import Mensajes from "./MensajesCard";
 import io from "socket.io-client";
 import { Container, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+const url = process.env.REACT_APP_BASE_URL;
+const socket = url === "http://localhost:8081"? io.connect(url) : null ;
+
 const MensajesContainer = () => {
-const socket = io.connect("http://localhost:8081/");
 
   const [mensajes, setMensajes] = useState([]);
   const [newMensaje, setNewMensaje] = useState("");
@@ -67,7 +69,7 @@ const socket = io.connect("http://localhost:8081/");
           </Container>
           <Container display="flex">
             <form onSubmit={handleSubmit}>
-              <p> Usuario:{user.email}</p>
+              <p> Usuario:  {user.email}</p>
               <TextField
                 type="text"
                 name="newMensaje"
@@ -75,9 +77,10 @@ const socket = io.connect("http://localhost:8081/");
                 required
                 value={newMensaje}
                 onChange={(e) => setNewMensaje(e.target.value)}
+                
               />
               <div>
-              <Button variant="outlined" type="submit">Enviar</Button>
+              <Button variant="contained" className="btnSend" type="submit">Enviar</Button>
               </div>
             </form>
           </Container>
