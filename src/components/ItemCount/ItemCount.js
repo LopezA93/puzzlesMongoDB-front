@@ -28,7 +28,7 @@ const ItemCount = ({ stock, addItem }) => {
         aria-label="Explore Bahamas Islands"
         sx={{ ml: "auto", fontWeight: 600 }}
         onClick={() => addItem(number)}
-        disabled = {number === min ? true : false}
+        disabled = {number === min || stock ===0 ? true : false}
       >
         Añadir
       </Button>
